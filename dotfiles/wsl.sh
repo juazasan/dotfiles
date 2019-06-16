@@ -43,6 +43,17 @@ echo "Installing dos2unix..."
 echo ''
 sudo apt-get install dos2unix -y
 
+# install powerline
+
+echo ''
+echo 'installing powerline'
+echo ''
+../devframeworks/install-python.sh
+pip install powerline-status
+pip install powerline-shell
+sudo apt update
+sudo apt-get install fonts-powerline -y
+
 # changing default shell to tmux
 echo ''
 echo "changing default shell to tmux"
