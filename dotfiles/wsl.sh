@@ -54,6 +54,13 @@ pip install powerline-shell
 sudo apt update
 sudo apt-get install fonts-powerline -y
 
+# updating bash
+echo ''
+echo 'updating .bashrc and .bashaliases'
+echo ''
+cp ./.bash_aliases $HOME
+cp ./.bashrc $HOME
+
 # changing default shell to tmux
 echo ''
 echo "changing default shell to tmux"
