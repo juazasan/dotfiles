@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir $HOME/tmp
-curl -s https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz -o $HOME/tmp/go.tar.gz
+curl -s https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz -o $HOME/tmp/go.tar.gz
 tar -C $HOME/tmp -xf $HOME/tmp/go.tar.gz
 sudo mv $HOME/tmp/go /usr/local
 mkdir $HOME/go
