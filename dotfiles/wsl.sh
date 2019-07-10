@@ -2,6 +2,7 @@
 # Update pkg list
 echo "Updating package lists..."
 sudo apt-get update
+sudo apt upgrade -y
 # Installing git completion
 echo ''
 echo "Now installing git and bash-completion..."
