@@ -1,5 +1,10 @@
-sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
-ln -s /opt/kubectx/completion/kubectx.zsh $HOME/.zsh/completion/kubectx
-ln -s /opt/kubectx/completion/kubens.zsh $HOME/.zsh/completion/kubens
+git clone https://github.com/ahmetb/kubectx.git ~/.kubectx
+mkdir $HOME/.bash_completion
+ln -sf ~/.kubectx/completion/kubens.bash $HOME/.bash_completion/kubens
+ln -sf ~/.kubectx/completion/kubectx.bash $HOME/.bash_completion/kubectx
+cat << FOE >> ~/.bashrc
+
+
+#kubectx and kubens
+export PATH=~/.kubectx:\$PATH
+FOE
