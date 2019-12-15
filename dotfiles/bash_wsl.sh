@@ -29,7 +29,7 @@ echo ''
 echo "Now installing and configuring tmux..."
 echo ''
 sudo apt-get install tmux -y
-cp ./.tmux.conf $HOME
+cp ./bash.tmux.conf $HOME/.tmux.conf
 
 # Bash color scheme
 echo ''
@@ -54,6 +54,8 @@ pip install powerline-status
 pip install powerline-shell
 sudo apt update
 sudo apt-get install fonts-powerline -y
+mkdir -p ~/.config/powerline-shell && \
+powerline-shell --generate-config > ~/.config/powerline-shell/config.json
 
 # updating bash
 echo ''

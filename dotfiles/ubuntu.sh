@@ -32,7 +32,7 @@ echo ''
 echo "Now installing and configuring tmux..."
 echo ''
 sudo apt-get install tmux -y
-cp ./.tmux.conf $HOME
+cp ./bash.tmux.conf $HOME/.tmux.conf
 
 # install powerline
 
