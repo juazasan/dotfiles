@@ -13,13 +13,10 @@ sudo apt install curl -y
 fi
 
 # Installing git completion
-which git > /dev/null 2>&1
-if [[ $? -eq 0 ]] ; then
 echo ''
-echo "git already installed..."
-else
-echo "git not found, now installing git and bash-completion..."
+echo "Enabling git updates and bash-completion..."
 echo ''
+../devinfra/update-git.sh
 sudo apt install git bash-completion -y
 fi
 echo ''
