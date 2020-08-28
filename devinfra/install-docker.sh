@@ -29,8 +29,7 @@ sudo apt-get install docker-ce -y
 sudo usermod -aG docker $USER
 
 # Install docker-compose
-
-sudo pip3 install --user docker-compose
+sudo $(which pip3) install --user docker-compose
 echo "export PATH=~/.local/bin:$PATH" >> ~/.zprofile && source ~/.zprofile
 
 ## If in WSL run the following command:
