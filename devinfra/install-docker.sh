@@ -31,6 +31,3 @@ sudo usermod -aG docker $USER
 # Install docker-compose
 sudo $(which pip3) install --user docker-compose
 echo "export PATH=~/.local/bin:$PATH" >> ~/.zprofile && source ~/.zprofile
-
-## If in WSL run the following command:
-# echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
