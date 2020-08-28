@@ -105,5 +105,3 @@ source /etc/bash_completion.d/azure-cli
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias k="kubectl"
 alias mc="mc -x"
-
-source '$HOME/lib/azure-cli/az.completion'
