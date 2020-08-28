@@ -24,13 +24,6 @@ echo ''
 sudo apt-get install mc -y
 echo 'alias mc="mc -x"' >> $HOME/.bashrc
 
-# Setting up tmux
-echo ''
-echo "Now installing and configuring tmux..."
-echo ''
-sudo apt-get install tmux -y
-cp ./bash.tmux.conf $HOME/.tmux.conf
-
 # Bash color scheme
 echo ''
 echo "Now installing solarized dark WSL color scheme..."
@@ -63,9 +56,3 @@ echo 'updating .bashrc and .bashaliases'
 echo ''
 cp ./.bash_aliases $HOME
 cp ./.bashrc $HOME
-
-# changing default shell to tmux
-echo ''
-echo "changing default shell to tmux"
-echo ''
-chsh -s /usr/bin/tmux
