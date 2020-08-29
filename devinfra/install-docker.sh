@@ -27,6 +27,7 @@ sudo apt-get install docker-ce -y
 
 # Allow your user to access the Docker CLI without needing root access.
 sudo usermod -aG docker $USER
+newgrp docker
 
 # Install docker-compose
 sudo $(which pip3) install --user docker-compose
