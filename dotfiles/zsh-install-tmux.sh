@@ -12,7 +12,7 @@ cp ./zsh.tmux.conf $HOME/.tmux.conf
 echo ''
 
 # changing default shell to tmux
-echo ''
-echo "changing default shell to tmux"
-echo ''
-chsh -s /usr/bin/tmux
+#echo ''
+#echo "changing default shell to tmux"
+#echo ''
+#chsh -s /usr/bin/tmux
