@@ -1,8 +1,8 @@
 #!/bin/bash
-../devframeworks/install-java.sh
 echo ''
 echo 'Installing the git credential manager'
-mkdir $HOME/git-credential-manager
-curl -sL https://github.com/microsoft/Git-Credential-Manager-for-Mac-and-Linux/releases/download/git-credential-manager-2.0.4/git-credential-manager-2.0.4.jar -o $HOME/git-credential-manager/git-credential-manager.jar
-java -jar  $HOME/git-credential-manager/git-credential-manager.jar install
-git config --global credential.canFallBackToInsecureStore true
+curl -sL https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.252-beta/gcmcore-linux_amd64.2.0.252.766.deb -o $HOME/tmp/gcmcore-linux_amd64.deb
+sudo dpkg -i $HOME/tmp/gcmcore-linux_amd64.deb
+git-credential-manager-core configure
+rm -f $HOME/tmp/gcmcore-linux_amd64.deb
+#git config --global credential.canFallBackToInsecureStore true
