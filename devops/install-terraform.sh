@@ -1,6 +1,4 @@
 #!/bin/bash
-curl -L https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip -o $HOME/tmp/terraform.zip
-unzip -q $HOME/tmp/terraform.zip -d $HOME/tmp/terraform
-sudo mv $HOME/tmp/terraform/terraform /usr/local/bin
-rm -rf $HOME/tmp/terraform
-rm -f $HOME/tmp/terraform.zip
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" -y
+sudo apt-get update && sudo apt-get install terraform -y
