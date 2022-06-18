@@ -1,7 +1,7 @@
 #!/bin/bash
 echo ''
 echo 'Installing the git credential manager'
-curl -sL https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.692/gcmcore-linux_amd64.2.0.692.deb -o $HOME/tmp/gcmcore-linux_amd64.deb
+curl -sL https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.696/gcmcore-linux_amd64.2.0.696.deb -o $HOME/tmp/gcmcore-linux_amd64.deb
 sudo dpkg -i $HOME/tmp/gcmcore-linux_amd64.deb
 git-credential-manager-core configure
 rm -f $HOME/tmp/gcmcore-linux_amd64.deb
