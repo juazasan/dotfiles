@@ -1,8 +1,6 @@
 #!/bin/bash
-wget https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.deb
-sudo dpkg -i vagrant_2.2.18_x86_64.deb
-rm -f vagrant_2.2.18_x86_64.deb
-if [[ "$(< /proc/sys/kernel/osrelease)" == *Microsoft ]]; then 
-    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1" 
-    echo "export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"" >> ~/.bashrc && source ~/.bashrc
-fi
+sudo apt update && sudo apt install gpg -y
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt-get update && sudo apt-get install vagrant -y
