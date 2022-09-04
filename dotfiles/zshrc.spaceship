@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -68,16 +76,19 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions kubectl docker docker-compose golang helm vscode history sudo pip pipenv python virtualenv vagrant terraform)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=145"
+plugins=(git zsh-autosuggestions kubectl docker golang helm vscode)
 source $ZSH/oh-my-zsh.sh
 
-# azure-cli autocompletion
+
+# additional completion tools
 
 autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
+source <(kubectl completion zsh)
+source <(gh completion -s zsh)
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,5 +114,38 @@ source /etc/bash_completion.d/azure-cli
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias k="kubectl"
 alias mc="mc -x"
+alias getmyip="myip=$(curl -s ipconfig.io)"
+alias k9s='docker run --rm -it -v "$KUBECONFIG":/root/.kube/config quay.io/derailed/k9s'
+
+# custom PATH
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# functions
+go_test() {
+ go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+fpath=($fpath "/home/juazasan/.zfunctions")
+
+# Set Spaceship ZSH as a prompt
+
+autoload -U promptinit; promptinit
+prompt spaceship
+
+complete -o nospace -C /usr/bin/terraform terraform
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+# KUBECONFIG environment variable
+export KUBECONFIG=/home/juazasan/.kube/config
