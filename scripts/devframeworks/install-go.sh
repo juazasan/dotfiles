@@ -12,7 +12,7 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 go version
-echo 'export GOROOT=/usr/local/go' >> $HOME/.zprofile
-echo 'export GOPATH=$HOME/go' >> $HOME/.zprofile
-echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> $HOME/.zprofile
+echo 'export GOROOT=/usr/local/go' >> $HOME/.path.config
+echo 'export GOPATH=$HOME/go' >> $HOME/.path.config
+echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> $HOME/.path.config
 rm -f $HOME/tmp/go.tar.gz

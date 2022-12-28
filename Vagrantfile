@@ -3,5 +3,5 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/ubuntu2204"
-  config.vm.synced_folder ".", "/dotfiles"
+  config.vm.synced_folder ".", "/home/vagrant/dotfiles"
 end
