@@ -1,1 +1,5 @@
 .vagrant/**
+profile/.vim/bundles
+**/*.*.log
+**/2022-12-29-12-53-44.092-VBoxHeadless-50847.log
+

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 mkdir $HOME/tmp -p
 curl -s https://dl.google.com/go/go1.19.4.linux-amd64.tar.gz -o $HOME/tmp/go.tar.gz
 tar -C $HOME/tmp -xf $HOME/tmp/go.tar.gz

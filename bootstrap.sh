@@ -6,15 +6,17 @@ mkdir ~/tmp -p
 sudo apt-get install -y jq
 sudo apt-get install -y htop
 sudo apt-get install -y tmux
-sudo apt-get install -y sysstat 
+sudo apt-get install -y sysstat
 sudo apt-get install -y curl
 sudo apt-get install -y mc
 sudo apt-get install -y make
 sudo apt-get install -y make-doc
+sudo apt-get install -y universal-ctags
+sudo apt-get install -y build-essential cmake python3-dev # YouCompleteMe needs these
 
 ### install and configure git
 sudo apt-get install -y git
-scrips/devinfra/update-git.sh
+scripts/devinfra/update-git.sh
 GIT_VERSION=`git --version | awk '{print $3}'`
 URL="https://raw.github.com/git/git/v$GIT_VERSION/contrib/completion/git-completion.bash"
 echo ''
@@ -23,17 +25,12 @@ if ! curl "$URL" --silent --output "$HOME/.git-completion.bash"; then
 	echo "ERROR: Couldn't download completion script. Make sure you have a working internet connection." && exit 1
 fi
 
+### vim...
+
 ### configure profile
 
 # set tmux as default shell
 # chsh -s $(which tmux)
-
-# Vim color scheme install
-echo ''
-echo "Now installing vim wombat color scheme..."
-echo ''
-git clone https://github.com/sheerun/vim-wombat-scheme.git ~/.vim/colors/wombat 
-mv ~/.vim/colors/wombat/colors/* ~/.vim/colors/
 
 # link dotfiles
 touch ~/.path.config

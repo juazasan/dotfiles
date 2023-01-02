@@ -154,4 +154,4 @@ alias k="kubectl"
 alias mc="mc -x"
 
 ## custom path ##
-source .path.config
+source ~/.path.config
