@@ -3,7 +3,7 @@ scriptencoding utf-8
 
 " we are loading from a different path.
 " for some odd reason pathogen refuses to follow symbolic links
-set runtimepath+=~/dotfiles/profile/.vim/
+set runtimepath+=$VIM_PATH
 
 execute pathogen#infect('bundles/{}')
 

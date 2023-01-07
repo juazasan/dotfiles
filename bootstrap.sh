@@ -69,6 +69,7 @@ ln -s $(pwd)/profile/.vimrc ~/.vimrc
 
 ### link dotfiles
 touch ~/.path.config
+echo "export VIM_PATH=$(pwd)/profile/.vim" >> ~/.path.config
 echo "source $(pwd)/profile/.bashrc" > ~/.bashrc
 ln -s $(pwd)/profile/.tmux.conf ~/.tmux.conf
 source ~/.bashrc
