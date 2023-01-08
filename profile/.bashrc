@@ -150,7 +150,7 @@ go_test() {
 }
 #wsl
 if [[ $(grep -i microsoft /proc/version) ]]; then
-	export BROWSER="/c/Program Files (x86)/Microsoft/Edge Dev/Application/msedge.exe"
+	export BROWSER="/mnt/c/Program Files (x86)/Microsoft/Edge Dev/Application/msedge.exe"
 fi
 
 ## aliases ##
