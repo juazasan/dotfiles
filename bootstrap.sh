@@ -24,6 +24,18 @@ echo "Downloading git-completion for git version: $GIT_VERSION..."
 if ! curl "$URL" --silent --output "$HOME/.git-completion.bash"; then
 	echo "ERROR: Couldn't download completion script. Make sure you have a working internet connection." && exit 1
 fi
+echo "Configuring git settings..."
+read -p "Enter your name:" git_name
+read -p "Enter your email address:" git_email
+git config --global user.name $git_name
+git config --global user.email $git_email
+if [[ $(grep -i microsoft /proc/version) ]]; then
+  git config --global credential.credentialStore cache
+  git config --global credential.https://dev.azure.com.useHttpPath true
+  git config --global credential.helper "/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+else
+				scripts/devinfra/install-gitcredentialmgr.sh
+fi
 
 ### vim...
 # Pre-requisites
