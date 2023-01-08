@@ -32,7 +32,7 @@ git config --global user.email $git_email
 if [[ $(grep -i microsoft /proc/version) ]]; then
   git config --global credential.credentialStore cache
   git config --global credential.https://dev.azure.com.useHttpPath true
-  git config --global credential.helper "/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+  git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 else
 				scripts/devinfra/install-gitcredentialmgr.sh
 fi
