@@ -59,13 +59,14 @@ if [ "$color_prompt" = yes ]; then
     NC='\[\033[0m\]'
     BLUE='\[\033[1;34m\]'
     WHITE='[\033[00m\]'
+    GREEN='\[\033[1;32m\]'
     # if this is my main box, then just make it with a line break
-    if [[ -f ~/dotfiles/profile/is_main_box ]]; then
+    if [[ -f ~/.is_main_box ]]; then
         #export PS1="${PS1:0:($((${#PS1}-3)))}\n$ "
         #export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
         export PS1="${BLUE}\w${NC} $ "
     else
-        export PS1="${YELLOW}\u@\h:${BLUE}\w${NC} $ "
+        export PS1="${GREEN}\u@\h:${BLUE}\w${NC} $ "
     fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
