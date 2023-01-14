@@ -27,7 +27,7 @@ fi
 echo "Configuring git settings..."
 read -p "Enter your name:" git_name
 read -p "Enter your email address:" git_email
-git config --global user.name $git_name
+git config --global user.name "$git_name"
 git config --global user.email $git_email
 if [[ $(grep -i microsoft /proc/version) ]]; then
   git config --global credential.credentialStore cache
