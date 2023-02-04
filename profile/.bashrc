@@ -128,6 +128,21 @@ fi
 
 ##### .bashrc extras #######
 
+## git config ##
+if [[ -z $(git config --global user.name) || -z $(git config --global user.email) ]]; then
+				echo "Configuring git for first use..."
+fi
+if [[ -z $(git config --global user.name) ]]; then
+				read -p "Enter your name:" git_name
+        git config --global user.name "$git_name"
+fi
+if [[ -z $(git config --global user.email) ]]; then
+        read -p "Enter your email address:" git_email
+        git config --global user.email $git_email
+fi
+
+
+
 ## functions ##
 # Stop and rm containers 
 docker-rm () { docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) ;}
@@ -157,6 +172,12 @@ fi
 ## aliases ##
 alias k="kubectl"
 alias mc="mc -x"
+alias myip=$(curl -s ipconfig.io)
+alias k9s='docker run --rm -it -v "$KUBECONFIG":/root/.kube/config quay.io/derailed/k9s'
+
+# time zone
+export TZ='Europe/Madrid'
 
 ## custom path ##
 source ~/.path.config
+

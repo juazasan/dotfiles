@@ -2,4 +2,7 @@
 profile/.vim/bundles
 **/*.*.log
 **/2022-12-29-12-53-44.092-VBoxHeadless-50847.log
-
+dotnet-install.sh
+git-credential-manager
+register-subscription.sh
+**/.vscode/**
