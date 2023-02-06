@@ -50,7 +50,8 @@ fi
 
 if [[ $distribution = "rhel" || $distribution = "fedora" ]]; then
   sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-  sudo systemctl start docker
+  sudo systemctl enable docker
+	sudo systemctl start docker
 fi
 # Allow your user to access the Docker CLI without needing root access.
 sudo usermod -aG docker $USER
