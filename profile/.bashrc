@@ -172,7 +172,7 @@ fi
 ## aliases ##
 alias k="kubectl"
 alias mc="mc -x"
-alias myip=$(curl -s ipconfig.io)
+alias getmyip="myip=$(curl -s ipconfig.io)"
 alias k9s='docker run --rm -it -v "$KUBECONFIG":/root/.kube/config quay.io/derailed/k9s'
 
 # time zone
