@@ -95,12 +95,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -141,13 +136,15 @@ if [[ -z $(git config --global user.email) ]]; then
         git config --global user.email $git_email
 fi
 
-
-
 ## functions ##
+
 # Stop and rm containers 
+
 docker-rm () { docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) ;}
 docker-rmi () { docker rmi -f $(docker images -q) ;}
+
 #tmux
+
 iDev(){  tmux attach -t $(whoami) || tmux new -s $(whoami); }
 sDev(){  tmux attach -t "$1" || tmux new -s "$1" ;}
 workspace(){  tmux attach -t "$1" || tmux new -s "$1" ;}
@@ -160,24 +157,34 @@ function current-tmux-session-name()
 function tmxv() { tmux split-window -h -c "$(pwd)" "$* ;/bin/bash";}
 function tmxh() { tmux split-window -v -c "$(pwd)" "$*; /bin/bash";}
 function tmxt() { tmux new-window -n "$1" -c "$(pwd)" "${*:2} ;/bin/bash";}
+
 #go
+
 go_test() {
   go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
 }
+
 #wsl
+
 if [[ $(grep -i microsoft /proc/version) ]]; then
 	export BROWSER="/mnt/c/Program Files (x86)/Microsoft/Edge Dev/Application/msedge.exe"
 fi
 
-## aliases ##
-alias k="kubectl"
-alias mc="mc -x"
-alias getmyip="myip=$(curl -s ipconfig.io)"
-alias k9s='docker run --rm -it -v "$KUBECONFIG":/root/.kube/config quay.io/derailed/k9s'
+# get my public IP address
+
+getmypip() {
+  mypip=$(curl -s ipinfo.io/ip)
+  export mypip
+  echo $mypip
+}
 
 # time zone
 export TZ='Europe/Madrid'
 
 ## custom path ##
-source ~/.path.config
+
+if [ -f ~/.path.config ]; then
+    source ~/.path.config
+fi
+
 
